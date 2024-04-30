@@ -17,22 +17,21 @@ async function invokeAction({ action, id, name, email, phone }) {
     case "list":
       const contacts = await Contacts.listContacts();
       console.table(contacts);
-      return contacts;
       break;
 
     case "get":
       const contact = await Contacts.getContactById(id);
-      return contact;
+      console.log(contact);
       break;
 
     case "add":
       const addedContact = await Contacts.addContact(name, email, phone);
-      return addedContact;
+      console.log(addedContact);
       break;
 
     case "remove":
       const removedContact = await Contacts.removeContact(id);
-      return removedContact;
+      console.log(removedContact);
       break;
 
     default:
@@ -40,4 +39,4 @@ async function invokeAction({ action, id, name, email, phone }) {
   }
 }
 
-invokeAction(options).then(console.log).catch(console.error);
+invokeAction(options);
